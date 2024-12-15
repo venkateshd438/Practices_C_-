@@ -1,0 +1,58 @@
+// Happy number 
+#include <iostream>
+static int flag=0;
+int happy_number(int num)
+{
+    int sum=0,temp;
+    while(num>0)
+    {
+        sum+=((num%10)*(num%10));
+        num/=10;
+    }
+    return sum;
+}
+int check_num_in_array(int num,int *arr,int count)
+{
+    for(int i=0;i<count;i++)
+    {
+        if(num==arr[i])
+        return 2;
+    }
+    return 0;
+}
+int main() {
+    // Write C++ code here
+    std::cout << "Enter any number\n";
+    int a,size=10,count=0;
+    std::cin>>a;
+    int *arr= new int[100];
+    arr[count]=a;
+    while(1)
+    {
+        count++;
+        a=happy_number(a);
+        std::cout<<a<<std::endl;
+        flag=check_num_in_array(a,arr,count);
+        arr[count]=a;
+        for(int i=0;i<count;i++)
+        {
+            if(arr[i]==1)
+             {
+                std::cout<<"yes ,it is happy number";
+                flag=1;
+             }
+        }
+        if(flag==1)
+        {
+            //std::cout<<"no ,it is happy number";
+            delete[] arr;
+            break;
+        }
+        else if(flag==2)
+        {
+            std::cout<<"no ,it is happy number";
+            delete[] arr;
+            break;
+        }
+    }
+}
