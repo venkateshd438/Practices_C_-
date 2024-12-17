@@ -1,0 +1,34 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+class sorting_array
+{
+    public:
+    void sort_array(int *arr ,int size)
+    {
+        for(int i=0; i<size; i++)
+        {
+            for(int j=i; j<size; j++)
+            {
+                if(arr[i]>arr[j])
+                {
+                    arr[i]=arr[i]+arr[j];
+                    arr[j]=arr[i]-arr[j];
+                    arr[i]=arr[i]-arr[j];
+                }
+            }
+        }
+    }
+};
+int main() {
+    int num;
+    std::cout<<"Enter number of array";
+    std::cin>>num;
+    int arr[num];
+    for(int i=0;i<num;i++)
+    std::cin>>arr[i];
+    sorting_array ob;
+    ob.sort_array(arr,num);
+    for(int i=0;i<num;i++)
+    std::cout<<arr[i]<<" ";
+    return 0;
+}
